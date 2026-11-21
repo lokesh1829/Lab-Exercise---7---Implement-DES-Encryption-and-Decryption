@@ -1,2 +1,61 @@
 # Lab-Exercise---7---Implement-DES-Encryption-and-Decryption
-Aim Procedure Output Result
+
+# AIM 
+
+To use the Data Encryption Standard (DES) algorithm for a practical application, such as securing sensitive data transmission in financial transactions.
+
+
+# ALGORITHM
+
+
+1.DES is based on a symmetric key encryption technique that encrypts data in 64-bit blocks.
+
+
+
+2/DES uses a Feistel network structure with 16 rounds of processing for encryption.
+
+
+
+3.DES has a 64-bit key, but only 56 bits are used for encryption (the remaining 8 bits are for parity).
+
+
+
+4.DES applies initial and final permutations along with 16 rounds of substitution and permutation transformations to produce ciphertext.
+
+
+# PROGRAM 
+```
+
+from Crypto.Cipher import DES
+from Crypto.Util.Padding import pad, unpad
+
+key = b'12345678'  # DES key must be 8 bytes
+cipher = DES.new(key, DES.MODE_ECB)
+
+text = b"HelloDES!"  # bytes
+
+# PKCS7 padding to 8-byte DES block
+padded_text = pad(text, 8)
+
+encrypted = cipher.encrypt(padded_text)
+
+# decrypt
+decrypted_padded = cipher.decrypt(encrypted)
+decrypted = unpad(decrypted_padded, 8)
+
+print("Original:", text)
+print("Encrypted:", encrypted)
+print("Decrypted:", decrypted)
+
+
+```
+# OUTPUT
+
+
+<img width="1920" height="1080" alt="Screenshot 2026-11-20 091216" src="https://github.com/user-attachments/assets/c99d2f40-69ce-432a-b99d-f5106a3e734c" />
+
+
+
+# RESULT
+
+The DES Encryption and Decryption program is executed successfully.
